@@ -28,7 +28,7 @@ if (isset($_POST['ordine'])) {
         </br>
         Categoria: 
         Hardware <input <?php foreach($categorie as $categoria) {if($categoria === 'Hardware') echo 'checked';} ?> type='checkbox' value='Hardware' name='categorie[]'/>
-        TV <input <?php foreach($categorie as $categoria) {if($categoria === 'TV') echo 'checked';} ?> type='checkbox' value='TV' name='categorie[]'/>
+        Cuffie <input <?php foreach($categorie as $categoria) {if($categoria === 'Cuffie') echo 'checked';} ?> type='checkbox' value='Cuffie' name='categorie[]'/>
         Accessori <input <?php foreach($categorie as $categoria) {if($categoria === 'Accessori') echo 'checked';} ?> type='checkbox' value='Accessori' name='categorie[]'/>
         </br>
         <button type='submit' name='filtra-submit'>Filtra</button>

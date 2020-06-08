@@ -1,3 +1,7 @@
+:root {
+    --main-color: royalblue; 
+}
+
 /*------------------------------ GENERALE ----------------------------*/
  html, body {
     height: 100%;
@@ -23,13 +27,13 @@ a {
 
 button {
     padding: 0 .8rem;
-    border: 1px solid royalblue;
-    color: royalblue;
+    border: 1px solid var(--main-color);
+    color: var(--main-color);
     transition: .2s;
     border-radius: .4rem;
     cursor: pointer;
     &:hover {
-        background-color: royalblue;
+        background-color: var(--main-color);
         color: white;
         border-color: white;
     }
@@ -64,7 +68,7 @@ nav {
     height: 75px;
     align-items: center;
     justify-content: space-between;
-    background-color: royalblue;
+    background-color: var(--main-color);
     padding: 0 2rem;
 
     #nav-links {
@@ -100,6 +104,10 @@ nav {
         .input {
             padding: .2rem .5rem;
             font-size: .9rem;
+        }
+
+        #btn-user {
+            font-size: 1.2rem;
         }
 
         #registrati {
@@ -252,7 +260,7 @@ nav {
         flex-direction: column;
         align-items: center;
         width: 450px;
-        background-color: royalblue;
+        background-color: var(--main-color);
         margin: auto;
         padding: 1rem;
         border-radius: 2rem;
@@ -394,7 +402,7 @@ nav {
 
         button {
             height: 26px;
-            
+            margin-top: .5rem;
         }
     }
 }
@@ -405,7 +413,7 @@ nav {
 #checkout-page {
     height: 700px;
     width: 500px;
-    background-color: royalblue;
+    background-color: var(--main-color);
     margin: auto;
     padding: 1rem 4rem;
     border-radius: 2rem;
@@ -489,7 +497,7 @@ nav {
         padding: .9rem 0 .9rem 1.2rem;
         text-align: center;
         button {
-            color: royalblue;
+            color: var(--main-color);
             height: 30px;
             font-size: 1.1rem;
             &:hover {
@@ -507,13 +515,41 @@ nav {
 #userPage {
     display: flex;
     flex-direction: column;
-    padding: 1rem 4rem;
-    div.ordine {
-        margin-bottom: 4rem;
-        .order-product {
-            img {
-                width: 50px;
-                height: auto;
+    align-items: center;
+    padding: 2rem;
+    
+    p {
+        font-size: 1.1rem;
+        margin: .5rem 0;
+    }
+
+    h2 {
+        margin-bottom: 1.7rem;
+    }
+
+    #ordini {
+        margin-top: 6rem;
+        max-width: 1200px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .ordine {
+            margin-bottom: 3rem;
+            border: 2px solid lightgrey;
+            padding: 1rem;
+            .order-products {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                grid-gap: 2rem;
+                margin-top: 2rem;
+              .order-product {
+                    img {
+                        height: 50px;
+                        width: auto;
+                    }
+                }  
             }
         }
     }
@@ -524,10 +560,22 @@ nav {
 footer {
     height: 50px;
     width: 100%;
-    background-color: darkgrey;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--main-color);
+    position: relative;
+    bottom: 0;
+    padding: 0 1rem;
+    a {
+        text-decoration: underline;
+        &:hover {
+            color: springgreen;
+        }
+    }
+
 }
-
-
 
 /* ANIMAZIONE GRADIENT */
 .animate-gradient {

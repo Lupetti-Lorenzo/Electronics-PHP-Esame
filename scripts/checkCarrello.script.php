@@ -10,17 +10,17 @@ else if (isset($_POST['checkout-submit'])) {
 session_start();
 //array con id punti vendita con tutti i prodotti disponibili
 $intersezArray = [];
-//controllo se i prodotti nel carrello sono disponibili 
+//controllo se i prodotti nel carrello sono disponibili
+//effettuo il lock della tabella magazzino, se lo script é chiamato da acquista il lock é gia stato fatto
+if (!isset($_POST['acquista-submit'])) mysqli_query($conn, 'LOCK TABLE Magazzino WRITE;');
 for ($i = 0; $i < count($_SESSION['carrello']); $i = $i + 2) {
     $prod = $_SESSION['carrello'][$i];
     $quantita = $_SESSION['carrello'][$i + 1];
-    mysqli_query($conn, 'LOCK TABLE Magazzino WRITE;');
     $select = "SELECT IDPuntoVendita FROM Magazzino WHERE IDProdotto = $prod AND quantita > $quantita;";
     $query = mysqli_query($conn, $select);
     if(!$query) {
         die(mysqli_error($conn));
     }
-    mysqli_query($conn, 'UNLOCK TABLES;');
     $resCheck = mysqli_num_rows($query);
     if ($resCheck <= 0) {
         resetCart($prevCarrello);
@@ -37,6 +37,7 @@ for ($i = 0; $i < count($_SESSION['carrello']); $i = $i + 2) {
         }
     }
 }
+if (!isset($_POST['acquista-submit'])) mysqli_query($conn, 'UNLOCK TABLES;');
 
 function resetCart($prevCar) {
     //resetto il carrello il prodotto non esiste in nessun pv in quelle quantita

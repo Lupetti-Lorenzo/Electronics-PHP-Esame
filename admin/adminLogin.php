@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin login page</title>
-</head>
-<body>
-
+<?php require './adminheader.php'; ?>
+<body id='admin-login'>
+<h1>Login admin</h1>
 <?php 
     if (isset($_GET['errorLogin'])) {
         switch ($_GET['errorLogin']) {

@@ -7,7 +7,7 @@ CREATE TABLE Prodotto (
     nome VARCHAR(30),
     categoria VARCHAR(30),
     prezzo INTEGER,
-    immagine VARCHAR(80)
+    immagine VARCHAR(120)
 );
 
 CREATE TABLE Cliente (
@@ -43,51 +43,25 @@ CREATE TABLE Ordine (
 );
 
 CREATE TABLE DettagliOrdine (
-    IDProdotto BIGINT,
-    IDOrdine BIGINT,
+    IDProdotto BIGINT REFERENCES Prodotto.ID,
+    IDOrdine BIGINT REFERENCES Ordine.ID,
     quantita INTEGER,
     PRIMARY KEY(IDProdotto, IDOrdine)
 );
 
 CREATE TABLE Magazzino (
-    IDProdotto BIGINT,
-    IDPuntoVendita BIGINT,
+    IDProdotto BIGINT REFERENCES Prodotto.ID,
+    IDPuntoVendita BIGINT REFERENCES IDPuntoVendita.ID,
     quantita INTEGER,
     PRIMARY KEY(IDProdotto, IDPuntoVendita)
 );
 
 CREATE TABLE AdminProfile (
     ID SERIAL PRIMARY KEY,
-    IDPuntoVendita BIGINT,
+    IDPuntoVendita BIGINT REFERENCES PuntoVendita.ID,
     username VARCHAR(30),
-    pwd VARCHAR(513)
+    pwd VARCHAR(513),
 );
-
-
-INSERT INTO Prodotto VALUES 
-(0, "Arduino", "Hardware", 30, "https://images-na.ssl-images-amazon.com/images/I/51rmayrbsPL._AC_.jpg"),
-(0, "Breadboard", "Hardware", 10, "https://images-na.ssl-images-amazon.com/images/I/61gIK-1ze6L._SL1412_.jpg"),
-(0, "Condensatore", "Hardware", 3, "https://images-na.ssl-images-amazon.com/images/I/71fRYostwSL._SL1500_.jpg"),
-(0, "Torcia", "Accessori", 5, "https://images-na.ssl-images-amazon.com/images/I/61Yvyr%2BJJXL._AC_SL1001_.jpg"),
-;
-
-INSERT INTO PuntoVendita VALUES 
-(0, "3335664587", 'Lombardia' , 'Milano', 'viale Adua', 56, 78436),
-(0, "3353335546", 'Toscana' , 'Montecatini', 'via Baccelli', 12, 51016),
-(0, "3353543576", 'Lazio' , 'Roma', 'via Roma', 26, 10245)
-;
-
-
-INSERT INTO Magazzino VALUES 
-(1, 1, 1000),
-(2, 1, 1000),
-(3, 1, 600),
-(4, 1, 500),
-(1, 2, 200),
-(2, 2, 200),
-(3, 2, 200),
-(4, 2, 200)
-;
 
 
 CREATE USER 'Cliente'@'localhost' IDENTIFIED BY 'Cliente';
@@ -110,3 +84,42 @@ GRANT UPDATE, INSERT, DELETE ON Electronics.Magazzino TO 'Admin'@'localhost';
 GRANT LOCK TABLES ON Electronics.* TO 'Admin'@'localhost';
 ALTER USER 'Admin'@'localhost' IDENTIFIED WITH mysql_native_password
 BY 'Admin'; 
+
+
+
+INSERT INTO Prodotto VALUES
+(0, 'Arduino', 'Hardware', 30, 'https://images-na.ssl-images-amazon.com/images/I/51rmayrbsPL._AC_.jpg'),
+(0, 'Breadboard', 'Hardware', 10, 'https://images-na.ssl-images-amazon.com/images/I/61gIK-1ze6L._SL1412_.jpg'),
+(0, 'Condensatore', 'Hardware', 3, 'https://images-na.ssl-images-amazon.com/images/I/71fRYostwSL._SL1500_.jpg'),
+(0, 'Torcia da campeggio', 'Accessori', 10, 'https://images-na.ssl-images-amazon.com/images/I/61bJvNTME9L._AC_SL1000_.jpg'),
+(0, 'LED', 'Accessori', 30, 'https://images-na.ssl-images-amazon.com/images/I/71hAlyVGdTL._AC_SL1000_.jpg'),
+(0, 'Cuffie da corsa', 'Cuffie', 200, 'https://images-na.ssl-images-amazon.com/images/I/51WHBIl20uL._AC_SL1024_.jpg')
+;
+
+INSERT INTO PuntoVendita VALUES 
+(0, "3335664587", 'Lombardia' , 'Milano', 'viale Adua', 56, 78436),
+(0, "3353335546", 'Toscana' , 'Montecatini', 'via Baccelli', 12, 51016),
+(0, "3353543576", 'Lazio' , 'Roma', 'via Roma', 26, 10245)
+;
+
+
+INSERT INTO Magazzino VALUES 
+(1, 1, 1000),
+(2, 1, 1000),
+(3, 1, 600),
+(4, 1, 500),
+(5, 1, 500),
+(6, 1, 500),
+(1, 2, 200),
+(2, 2, 200),
+(3, 2, 200),
+(4, 2, 200),
+(5, 2, 200),
+(6, 2, 200),
+(1, 3, 200),
+(2, 3, 200),
+(3, 3, 200),
+(4, 3, 200),
+(5, 3, 200),
+(6, 3, 200)
+;

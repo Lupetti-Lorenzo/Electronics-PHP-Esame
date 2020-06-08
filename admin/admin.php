@@ -6,17 +6,10 @@ if (!isset($_SESSION['adminPV'])) {
     exit();
 }
 $pv = $_SESSION['adminPV'];
+require './adminheader.php';
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <link rel="stylesheet" type="text/css" href="./adminStyle/style.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pagina admin</title>
-</head>
-<body>
+<body id='admin-page'>
     <form action='../scripts/logout.script.php' method='post'>
         <button type='submit' name='logout-submit'>Logout</button>
     </form>
@@ -41,6 +34,7 @@ $pv = $_SESSION['adminPV'];
             while ($datiOrdini = mysqli_fetch_assoc($queryOrdini)) {
                 echo "<div class='ordine'>
                     <h3>Ordine N ".$datiOrdini['ID']."</h3>
+                    <p>Data: ".$datiOrdini['dataOrdine']."</p>
                 ";
                 
                 //dati dell utente
@@ -49,7 +43,7 @@ $pv = $_SESSION['adminPV'];
                 $datiUtente = mysqli_fetch_assoc($queryUser);
                 if (!$query || !$datiUtente) die(mysqli_error($conn));
                 echo "
-                    <div class='ordine-cliente'>
+                    <div class='order-client'>
                         <h3>Cliente</h3>
                         <p>Nome: ".$datiUtente['nome']."</p>
                         <p>Cognome: ".$datiUtente['cognome']."</p>
@@ -69,7 +63,7 @@ $pv = $_SESSION['adminPV'];
                 $selectProds = "SELECT * FROM Prodotto WHERE ID IN (SELECT IDProdotto FROM DettagliOrdine WHERE IDOrdine = ".$datiOrdini['ID'].");";
                 $prodotti = mysqli_query($conn, $selectProds);
                 if(!$prodotti)  die(mysqli_error($conn));
-                echo "<div class='ordine-prodotti'> <h3>Prodotti:</h3>";
+                echo "<h3>Prodotti:</h3><div class='order-products'> ";
                 while($riga = mysqli_fetch_assoc($prodotti))
                 {   //<img src='".$riga['immagine']."'alt='no img'/>
                     //seleziono la quantita acquistata del prodotto
@@ -78,11 +72,11 @@ $pv = $_SESSION['adminPV'];
                     if(!$queryqnt)  die(mysqli_error($conn));
                     $quantita = mysqli_fetch_assoc($queryqnt);
                     echo "
-                            <div class='ordine-prodotto'>    
+                            <div class='order-product'>   
+                            <img src='".$riga['immagine']."'alt='no img'/> 
                                 <div class='product-name'>
                                         <p>".$riga['nome']."</p>
-                                        <p> -- $".$riga['prezzo']."in quantita:  ".$quantita['quantita']."</p>
-                                        <p> Categoria: ".$riga['categoria']."</p>
+                                        <p>Prezzo: $".$riga['prezzo']."- Quantita:  ".$quantita['quantita']."</p>
                                 </div> 
                             </div>
                     ";

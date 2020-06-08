@@ -1,1 +1,130 @@
-/* No CSS *//*# sourceMappingURL=style.css.map */
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+* {
+  margin: 0px;
+  padding: 0px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+.flex-center, #admin-login, #admin-login form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+button {
+  margin-top: .3rem;
+  width: 80px;
+  height: 35px;
+  font-size: 1.2rem;
+  padding: .2rem;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#admin-login {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#admin-login h1 {
+  position: relative;
+  top: -2rem;
+  color: royalblue;
+}
+
+#admin-login form {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#admin-login form input {
+  width: 250px;
+  font-size: 1.2rem;
+  padding: .2rem .2rem .2rem .7rem;
+  border: 1px solid royalblue;
+  margin: .5rem 0;
+}
+
+#admin-login form button {
+  background-color: royalblue;
+}
+
+#admin-page {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#admin-page button {
+  background-color: coral;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  margin: 1rem 0;
+}
+
+#admin-page h1 {
+  padding: 0 1rem;
+  margin: 1rem 0;
+}
+
+#admin-page h2 {
+  margin: 1rem 0 .5rem 0;
+}
+
+#admin-page p {
+  margin: .3rem 0;
+  font-size: 1.1rem;
+}
+
+#admin-page #ordini {
+  max-width: 1200px;
+}
+
+#admin-page #ordini .ordine {
+  margin-bottom: 3rem;
+  border: 2px solid lightgrey;
+  padding: 1rem;
+}
+
+#admin-page #ordini .ordine .order-client {
+  margin: 1rem 0;
+}
+
+#admin-page #ordini .ordine .order-products {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  grid-gap: 2rem;
+  margin-top: 1rem;
+}
+
+#admin-page #ordini .ordine .order-products .order-product img {
+  height: 50px;
+  width: auto;
+}
+/*# sourceMappingURL=style.css.map */

@@ -46,7 +46,7 @@
             if (isset($_SESSION['userId'])) {
                 echo "
                     <form action='./userPage.php' method='post'>
-                        <button type='submit' name='user-submit'><i class='fas fa-user'></i></button>
+                        <button id='btn-user' type='submit' name='user-submit'><i class='fas fa-user'></i></button>
                     </form>
                     <form action='./scripts/logout.script.php' method='post'>
                         <button type='submit' name='logout-submit'>Logout</button>
