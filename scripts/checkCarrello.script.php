@@ -39,6 +39,7 @@ for ($i = 0; $i < count($_SESSION['carrello']); $i = $i + 2) {
 }
 if (!isset($_POST['acquista-submit'])) mysqli_query($conn, 'UNLOCK TABLES;');
 
+
 function resetCart($prevCar) {
     //resetto il carrello il prodotto non esiste in nessun pv in quelle quantita
     $_SESSION['carrello'] = $prevCar;

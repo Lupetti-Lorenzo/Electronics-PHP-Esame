@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (isset($_POST['acquista-submit']) && isset($_SESSION['userUid']) && isset($_POST['tipoSpedizione']) && isset($_POST['pv'])) {
+if (isset($_POST['acquista-submit']) && isset($_SESSION['userUid']) && isset($_POST['tipoSpedizione']) && isset($_POST['pv']) && !empty($_SESSION['carrello'])) {
     require './databasehandler.script.php';
     session_start();
     if (!mysqli_query($conn, "START TRANSACTION;")) die(mysqli_error($conn));

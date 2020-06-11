@@ -38,6 +38,9 @@
             else if (isset($_GET['successoCarrello'])) {
                 echo '<p class=success>Prodotto aggiunto con successo!</p>';
             }
+            else if (isset($_GET['errorCheck'])) {
+                echo '<p class=error>Errore durante il checkout, riprova!</p>';
+            }
             //messaggio successo ordine
             if (isset($_GET['acquisto'])) {
                 echo '<p class=success>Ordine confermato con successo!</p>';

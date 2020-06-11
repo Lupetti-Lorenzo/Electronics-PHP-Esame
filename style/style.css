@@ -36,6 +36,7 @@ button {
   transition: .2s;
   border-radius: .4rem;
   cursor: pointer;
+  background-color: white;
 }
 
 button:hover {
